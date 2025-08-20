@@ -10,7 +10,7 @@ class MissingFrames:
     missing_count: int = 0
 
 
-def find_missing_rangesV2(frames: list[int]) -> dict:
+def find_missing_ranges(frames: list[int]) -> dict:
     result = MissingFrames([], [])
     if len(frames) == 0:
         return result.__dict__
@@ -106,12 +106,12 @@ def test_v1():
 
 def bench_v2():
     for value in Tests.tests:
-        find_missing_rangesV2(value["frames"])
+        find_missing_ranges(value["frames"])
 
 
 def test_v2():
     for value in Tests.tests:
-        res = find_missing_rangesV2(value["frames"])
+        res = find_missing_ranges(value["frames"])
         print(f"test {value["title"]} result:", res == value["expected"])
 
 
