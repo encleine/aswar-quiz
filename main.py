@@ -16,11 +16,10 @@ def find_missing_ranges(frames: list[int]) -> dict:
         return result.__dict__
 
     frames_map: dict[int, bool] = {}
-    for value in range(1, max(frames)):
-        inFrames = value in frames
-        frames_map[value] = inFrames
-        if not inFrames:
-            result.missing_count += 1
+    for value in range(1, max(frames) + 1):
+        frames_map[value] = value in frames
+
+    result.missing_count = len(frames_map) - len(frames)
 
     gap: list[int] = []
     for value in frames_map:
